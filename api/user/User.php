@@ -58,8 +58,6 @@ class User {
 
             if($donnees = $request->fetch()){
                 $salt = $donnees["salt"];
-                var_dump(hash('sha512', $salt + $hash, false));
-                var_dump($donnees["hash"]);
 
                 if($donnees["hash"] == hash('sha512', $salt + $hash, false)){
                     $user = new User($pseudo, $donnees["hash"], $donnees["email"]);
@@ -69,6 +67,12 @@ class User {
                     $user->setFirstname($donnees["first_name"]);
                     $user->setLastname($donnees["last_name"]);
                     $user->setToken(User::generateRandomString(200));
+
+                    $request = $bdd->prepare("UPDATE driver SET token=:token WHERE driver_id = :driver");
+                    $request->execute(array(
+                        'token' => $user->getToken(),
+                        'driver' => $user->getId()
+                    ));
 
                     return $user;
                 }
@@ -81,8 +85,6 @@ class User {
 
             if($donnees = $request->fetch()){
                 $salt = $donnees["salt"];
-                var_dump(hash('sha512', $salt + $hash, false));
-                var_dump($donnees["hash"]);
 
                 if($donnees["hash"] == hash('sha512', $salt + $hash, false)){
                     $user = new User($donnees["pseudo"], $donnees["hash"], $email);
@@ -91,6 +93,12 @@ class User {
                     $user->setFirstname($donnees["first_name"]);
                     $user->setLastname($donnees["last_name"]);
                     $user->setToken(generateRandomString(200));
+
+                    $request = $bdd->prepare("UPDATE driver SET token=:token WHERE driver_id = :driver");
+                    $request->execute(array(
+                        'token' => $user->getToken(),
+                        'driver' => $user->getId()
+                    ));
 
                     return $user;
                 }

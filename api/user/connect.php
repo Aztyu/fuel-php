@@ -27,7 +27,6 @@ switch(count($parse_url)){
     case 2:
         $bdd = ConnectToMySQL();
         if($parse_url[0][0] == 'pseudo' && $parse_url[1][0] == 'password'){
-            echo "user<br>";
             $user = User::getUser($bdd, $parse_url[1][1], $parse_url[0][1], null);
             if($user){
                 Message::sendJSONMessage(false, $user->asArray());

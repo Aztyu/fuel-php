@@ -6,9 +6,9 @@
  * Time: 22:48
  */
 
-include('../../database/connection.php');
-include('../../request/Message.php');
-include('User.php');
+require_once('../../database/connection.php');
+require_once('../../request/Message.php');
+require_once('../../entities/User.php');
 
 header ('Content-type: text/html; charset=utf-8');
 

@@ -8,7 +8,7 @@
 
 include('../../database/connection.php');
 include('../../request/Message.php');
-include('User.php');
+include('../../entities/User.php');
 
 header ('Content-type: text/html; charset=utf-8');
 

@@ -12,7 +12,6 @@ class User {
     private $email;
     private $firstname;
     private $lastname;
-    private $car_id;
 
     private $password;
     private $salt;
@@ -62,7 +61,6 @@ class User {
                 if($donnees["hash"] == hash('sha512', $salt + $hash, false)){
                     $user = new User($pseudo, $donnees["hash"], $donnees["email"]);
                     $user->setId($donnees["driver_id"]);
-                    $user->setCarId($donnees["car_id"]);
                     $user->setPseudo($donnees["pseudo"]);
                     $user->setFirstname($donnees["first_name"]);
                     $user->setLastname($donnees["last_name"]);
@@ -89,7 +87,6 @@ class User {
                 if($donnees["hash"] == hash('sha512', $salt + $hash, false)){
                     $user = new User($donnees["pseudo"], $donnees["hash"], $email);
                     $user->setId($donnees["id"]);
-                    $user->setCarId($donnees["car_id"]);
                     $user->setFirstname($donnees["first_name"]);
                     $user->setLastname($donnees["last_name"]);
                     $user->setToken(generateRandomString(200));
@@ -167,13 +164,26 @@ class User {
     }
 
     public function asArray(){
-        return array("id" => $this->id,
-            "pseudo" => $this->pseudo,
-            "firstname" => $this->firstname,
-            "lastname" => $this->lastname,
-            "email" => $this->email,
-            "car_id" => $this->car_id,
-            "token" => $this->token);
+        $user_array = array();
+        if($this->id){
+            $user_array += array("id" => $this->id);
+        }
+        if($this->pseudo){
+            $user_array += array("pseudo" => $this->pseudo);
+        }
+        if($this->firstname){
+            $user_array += array("firstname" => $this->firstname);
+        }
+        if($this->lastname){
+            $user_array += array("lastname" => $this->lastname);
+        }
+        if($this->email){
+            $user_array += array("email" => $this->email);
+        }
+        if($this->token){
+            $user_array += array("token" => $this->token);
+        }
+        return $user_array;
     }
 
     /**
@@ -224,22 +234,6 @@ class User {
     public function setToken($token)
     {
         $this->token = $token;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCarId()
-    {
-        return $this->car_id;
-    }
-
-    /**
-     * @param mixed $car_id
-     */
-    public function setCarId($car_id)
-    {
-        $this->car_id = $car_id;
     }
 
     /**

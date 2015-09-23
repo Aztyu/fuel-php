@@ -39,14 +39,14 @@ switch(count($parse_url)){
 }
 
 function lookForStation($bdd, $coord, $fuel, $radius){
-    $s_lat = $coord->getLatitude() - 0.09;
-    $s_lon = $coord->getLongitude() - 0.125;
-    $e_lat = $coord->getLatitude() + 0.09;
-    $e_lon = $coord->getLongitude() + 0.125;
+    $s_lat = $coord->getLatitude() - 0.09*($radius/10);      //Check for
+    $s_lon = $coord->getLongitude() - 0.125*($radius/10);
+    $e_lat = $coord->getLatitude() + 0.09*($radius/10);
+    $e_lon = $coord->getLongitude() + 0.125*($radius/10);
 
     $date = '2014-00-00';
 
-    $request = $bdd->prepare("SELECT * FROM fuel_station WHERE latitude >= :s_lat AND latitude <= :e_lat AND longitude >= :s_lon AND longitude <= :e_lon AND last_update >= :date");
+    $request = $bdd->prepare("SELECT * FROM fuel_station WHERE latitude >= :s_lat AND latitude <= :e_lat AND longitude >= :s_lon AND longitude <= :e_lon AND last_update >= :date");    //Only select station with a valid price
     $request->execute(array(
         's_lat' => $s_lat,
         'e_lat' => $e_lat,
@@ -86,7 +86,8 @@ function lookForStation($bdd, $coord, $fuel, $radius){
         }
     }
 
-    var_dump($station);
+    $station[0]->asJson();
+    //0var_dump($station);
 }
 
 //latitude 0.09 = 10km

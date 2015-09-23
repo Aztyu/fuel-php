@@ -6,7 +6,7 @@
  * Time: 18:33
  */
 
-class Coordinates{
+class Coordinates implements JsonSerializable{
     private $latitude;
     private $longitude;
 
@@ -14,6 +14,20 @@ class Coordinates{
     {
         $this->latitude = $latitude;
         $this->longitude = $longitude;
+    }
+
+    /**
+     * (PHP 5 &gt;= 5.4.0)<br/>
+     * Specify data which should be serialized to JSON
+     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     */
+    function jsonSerialize(){
+        return [
+            'latitude' => $this->latitude,
+            'longitude' => $this->longitude
+        ];
     }
 
     /**
@@ -59,6 +73,4 @@ class Coordinates{
         $d = $radius * $c;
         return $d;
     }
-
-
 }

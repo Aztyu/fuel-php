@@ -140,6 +140,6 @@ class FuelStation implements JsonSerializable{
     }
 
     public function asJson(){
-        var_dump(json_encode($this));
+        return $this;
     }
 }

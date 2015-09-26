@@ -31,8 +31,8 @@ switch(count($parse_url)){
         if($parse_url[0][0] == 'lat' && $parse_url[1][0] == 'lon' && $parse_url[2][0] == 'fuel' && $parse_url[3][0] == 'radius') {
             $coord = new Coordinates(floatval($parse_url[0][1]), floatval($parse_url[1][1]));
             lookForStation($bdd, $coord, $parse_url[2][1], $parse_url[3][1]);
-            echo 'Yolo';
         }
+        break;
     default:
         Message::sendJSONMessage(true, "Erreur serveur");
         break;
@@ -46,7 +46,9 @@ function lookForStation($bdd, $coord, $fuel, $radius){
 
     $date = '2014-00-00';
 
-    $request = $bdd->prepare("SELECT * FROM fuel_station WHERE latitude >= :s_lat AND latitude <= :e_lat AND longitude >= :s_lon AND longitude <= :e_lon AND last_update >= :date");    //Only select station with a valid price
+    $request = $bdd->prepare("SELECT *
+        FROM fuel_station
+        WHERE latitude >= :s_lat AND latitude <= :e_lat AND longitude >= :s_lon AND longitude <= :e_lon AND last_update >= :date");    //Only select station with a valid price
     $request->execute(array(
         's_lat' => $s_lat,
         'e_lat' => $e_lat,
@@ -70,6 +72,11 @@ function lookForStation($bdd, $coord, $fuel, $radius){
         array_push($station, $station_row);
     }
 
+    if(count($station) <= 0){
+        Message::sendJSONMessage(true, "Aucune station trouvée");
+        return;
+    }
+
     for($i = 0; $i < count($station); $i++){
         $station_request = $bdd->prepare("SELECT *
             FROM station_price sp
@@ -85,14 +92,5 @@ function lookForStation($bdd, $coord, $fuel, $radius){
             $station[$i]->setFuelPrice(new FuelPrice($donnees['diesel_price'], $donnees['petrol95_price'], $donnees['petrol95E10_price'], $donnees['petrol98_price'], $donnees['gpl_price']));
         }
     }
-
-    $station[0]->asJson();
-    //0var_dump($station);
+    Message::sendJSONMessage(false, $station);
 }
-
-//latitude 0.09 = 10km
-//longitude 0.125 = 10km
-
-/*$coord1 = new Coordinates(43.8, 9);
-$coord2 = new Coordinates(43.8, 9.125);
-echo 'Distance '.$coord1->getDistance($coord2);*/

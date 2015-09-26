@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aeb2a481-c67f-4a80-bc08-d360d93aed5f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entities/Coordinates.php" afterPath="$PROJECT_DIR$/entities/Coordinates.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entities/FuelPrice.php" afterPath="$PROJECT_DIR$/entities/FuelPrice.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entities/FuelStation.php" afterPath="$PROJECT_DIR$/entities/FuelStation.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/fuel/find.php" afterPath="$PROJECT_DIR$/api/fuel/find.php" />
     </list>
@@ -77,26 +75,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="find.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="find.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/fuel/find.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.692307" vertical-offset="887" max-vertical-offset="1751">
-              <caret line="67" column="32" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.5868056" vertical-offset="853" max-vertical-offset="1717">
+              <caret line="80" column="42" selection-start-line="80" selection-start-column="42" selection-end-line="84" selection-end-column="61" />
               <folding>
-                <marker date="1442952996968" expanded="true" signature="1461:1583" placeholder="SELECT * FRO..fuel_station..." />
-                <marker date="1442952996968" expanded="true" signature="1461:1608" placeholder="SELECT * FRO..fuel_station..." />
-                <marker date="1442952996968" expanded="true" signature="1487:1507" placeholder="UPDATE drive..." />
-                <marker date="1442952996968" expanded="true" signature="2621:2814" placeholder="SELECT * FRO..station_price..." />
+                <marker date="1443255053294" expanded="true" signature="1451:1589" placeholder="SELECT * FRO..fuel_station..." />
+                <marker date="1443255053294" expanded="true" signature="1451:1614" placeholder="SELECT * FRO..fuel_station..." />
+                <marker date="1443255053294" expanded="true" signature="1485:1513" placeholder="UPDATE drive..." />
+                <marker date="1443255053294" expanded="true" signature="2746:2939" placeholder="SELECT * FRO..station_price..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FuelStation.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FuelStation.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/entities/FuelStation.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.418813" vertical-offset="510" max-vertical-offset="2550">
-              <caret line="52" column="45" selection-start-line="52" selection-start-column="45" selection-end-line="52" selection-end-column="45" />
+            <state vertical-scroll-proportion="-28.5" vertical-offset="1673" max-vertical-offset="2550">
+              <caret line="142" column="20" selection-start-line="142" selection-start-column="20" selection-end-line="142" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -176,10 +174,10 @@
         <option value="$PROJECT_DIR$/api/user/create.php" />
         <option value="$PROJECT_DIR$/api/user/connect.php" />
         <option value="$PROJECT_DIR$/database/connection.php" />
-        <option value="$PROJECT_DIR$/api/fuel/find.php" />
         <option value="$PROJECT_DIR$/entities/FuelPrice.php" />
         <option value="$PROJECT_DIR$/entities/Coordinates.php" />
         <option value="$PROJECT_DIR$/entities/FuelStation.php" />
+        <option value="$PROJECT_DIR$/api/fuel/find.php" />
       </list>
     </option>
   </component>
@@ -188,10 +186,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="960" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -377,7 +373,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="0" y="0" width="960" height="1040" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -387,7 +383,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1296875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26377118" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32944915" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32975295" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -853,19 +849,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/fuel/find.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.692307" vertical-offset="887" max-vertical-offset="1751">
-          <caret line="67" column="32" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
-          <folding>
-            <marker date="1442952996968" expanded="true" signature="1461:1583" placeholder="SELECT * FRO..fuel_station..." />
-            <marker date="1442952996968" expanded="true" signature="1461:1608" placeholder="SELECT * FRO..fuel_station..." />
-            <marker date="1442952996968" expanded="true" signature="1487:1507" placeholder="UPDATE drive..." />
-            <marker date="1442952996968" expanded="true" signature="2621:2814" placeholder="SELECT * FRO..station_price..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/entities/FuelPrice.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-18.307692" vertical-offset="0" max-vertical-offset="680">
@@ -876,9 +859,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/entities/FuelStation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.418813" vertical-offset="510" max-vertical-offset="2550">
-          <caret line="52" column="45" selection-start-line="52" selection-start-column="45" selection-end-line="52" selection-end-column="45" />
+        <state vertical-scroll-proportion="-28.5" vertical-offset="1673" max-vertical-offset="2550">
+          <caret line="142" column="20" selection-start-line="142" selection-start-column="20" selection-end-line="142" selection-end-column="20" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/fuel/find.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5868056" vertical-offset="853" max-vertical-offset="1717">
+          <caret line="80" column="42" selection-start-line="80" selection-start-column="42" selection-end-line="84" selection-end-column="61" />
+          <folding>
+            <marker date="1443255053294" expanded="true" signature="1451:1589" placeholder="SELECT * FRO..fuel_station..." />
+            <marker date="1443255053294" expanded="true" signature="1451:1614" placeholder="SELECT * FRO..fuel_station..." />
+            <marker date="1443255053294" expanded="true" signature="1485:1513" placeholder="UPDATE drive..." />
+            <marker date="1443255053294" expanded="true" signature="2746:2939" placeholder="SELECT * FRO..station_price..." />
+          </folding>
         </state>
       </provider>
     </entry>

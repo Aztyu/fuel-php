@@ -71,6 +71,6 @@ class Coordinates implements JsonSerializable{
         $a = (sin($diff_lat/2) * sin($diff_lat/2)) + cos($lat1) * cos($lat2) * sin($diff_lon/2) * sin($diff_lon/2);
         $c = 2 * atan2(sqrt($a), sqrt(1-$a));
         $d = $radius * $c;
-        return $d;
+        return round($d, 2);
     }
 }

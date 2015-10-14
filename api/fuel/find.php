@@ -1,5 +1,3 @@
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
 <?php
 
 require_once('../../entities/Coordinates.php');
@@ -26,11 +24,11 @@ foreach($_REQUEST as $key => $value){
 }
 
 switch(count($parse_url)){
-    case 4:
+    case 3:
         $bdd = ConnectToMySQL();
-        if($parse_url[0][0] == 'lat' && $parse_url[1][0] == 'lon' && $parse_url[2][0] == 'fuel' && $parse_url[3][0] == 'radius') {
+        if($parse_url[0][0] == 'lat' && $parse_url[1][0] == 'lon' && $parse_url[2][0] == 'radius') {
             $coord = new Coordinates(floatval($parse_url[0][1]), floatval($parse_url[1][1]));
-            lookForStation($bdd, $coord, $parse_url[2][1], $parse_url[3][1]);
+            lookForStation($bdd, $coord, $parse_url[2][1]);
         }
         break;
     default:
@@ -38,13 +36,16 @@ switch(count($parse_url)){
         break;
 }
 
-function lookForStation($bdd, $coord, $fuel, $radius){
+function lookForStation($bdd, $coord, $radius){
+    if($radius > 40){
+        $radius = 40;
+    }
     $s_lat = $coord->getLatitude() - 0.09*($radius/10);      //Check for
     $s_lon = $coord->getLongitude() - 0.125*($radius/10);
     $e_lat = $coord->getLatitude() + 0.09*($radius/10);
     $e_lon = $coord->getLongitude() + 0.125*($radius/10);
 
-    $date = '2014-00-00';
+    $date = '2014-00-00';       //Base date
 
     $request = $bdd->prepare("SELECT *
         FROM fuel_station
@@ -77,19 +78,18 @@ function lookForStation($bdd, $coord, $fuel, $radius){
         return;
     }
 
-    for($i = 0; $i < count($station); $i++){
-        $station_request = $bdd->prepare("SELECT *
-            FROM station_price sp
-                INNER JOIN fuel_price fp
-                    ON sp.price_id = fp.price_id
-            WHERE station_id = :station_id AND date >= :date;");
-        $station_request->execute(array(
-            'station_id' => $station[$i]->getStationId(),
-            'date' => $station[$i]->getLastUpdate()
-        ));
+    for($i = 0; $i < count($station); $i++) {
+        if ($station[$i]->getLastUpdate() > 0) {
+            $station_request = $bdd->prepare("SELECT *
+                FROM fuel_price
+                WHERE station_id = :station_id");
+            $station_request->execute(array(
+                'station_id' => $station[$i]->getLastUpdate()
+            ));
 
-        while($donnees = $station_request->fetch()) {
-            $station[$i]->setFuelPrice(new FuelPrice($donnees['diesel_price'], $donnees['petrol95_price'], $donnees['petrol95E10_price'], $donnees['petrol98_price'], $donnees['gpl_price']));
+            while ($donnees = $station_request->fetch()) {
+                $station[$i]->setFuelPrice(new FuelPrice($donnees['diesel_price'], $donnees['petrol95_price'], $donnees['petrol95E10_price'], $donnees['petrol98_price'], $donnees['gpl_price']));
+            }
         }
     }
     Message::sendJSONMessage(false, $station);

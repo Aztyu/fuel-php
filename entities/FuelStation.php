@@ -28,7 +28,8 @@ class FuelStation implements JsonSerializable{
         $this->city = "";
         $this->station_name = "";
         $this->brand = "";
-        $this->last_update = null;
+        $this->last_update = 0;
+        $this->distance = 0.0;
         $this->fuel_price = new FuelPrice(0, 0, 0, 0, 0);
     }
 

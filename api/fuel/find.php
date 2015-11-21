@@ -25,7 +25,7 @@ foreach($_REQUEST as $key => $value){
 
 switch(count($parse_url)){
     case 3:
-        $bdd = ConnectToMySQL();
+        $bdd = Connection::ConnectToMySQL();
         if($parse_url[0][0] == 'lat' && $parse_url[1][0] == 'lon' && $parse_url[2][0] == 'radius') {
             $coord = new Coordinates(floatval($parse_url[0][1]), floatval($parse_url[1][1]));
             lookForStation($bdd, $coord, $parse_url[2][1]);

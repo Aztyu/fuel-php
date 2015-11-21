@@ -121,7 +121,7 @@ class User {
 
     public function addToDatabase()
     {
-        $bdd = ConnectToMySQL();
+        $bdd = Connection::ConnectToMySQL();
         $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         if ($this->isPseudoTaken($bdd, $this->pseudo)) {

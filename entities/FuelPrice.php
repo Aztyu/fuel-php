@@ -41,9 +41,8 @@ class FuelPrice implements JsonSerializable{
 
     function insertToDB($station_id){
         try{
-            $bdd =  ConnectToMySQL();
+            $bdd =  Connection::ConnectToMySQL();
             $request = $bdd->prepare("INSERT INTO fuel_price VALUES (null, :diesel, :sp95, :sp95e10, :sp98,  :gpl, :curr_date, :station_id)");    //Only select station with a valid price
-            var_dump($request);
             $request->execute(array(
                 'diesel' => $this->diesel,
                 'sp95' => $this->sp95,
@@ -53,8 +52,6 @@ class FuelPrice implements JsonSerializable{
                 'curr_date' => date('Y-m-d'),
                 'station_id' => $station_id
             ));
-            var_dump($request);
-            //$request->execute();
 
             $last_id = $bdd->lastInsertId();
 

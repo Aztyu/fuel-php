@@ -7,10 +7,10 @@
  * Time: 12:17
  */
 class Logger{
-    public static $file = "fuel/log/log.log";
+    public static $file = "/log/log.log";
 
     public static function debugLog($message){
-        $data = "LOG DEBUG - From ".$_SERVER['REMOTE_ADDR']." | ".$message."\n";
+        $data = "LOG DEBUG - From ".$_SERVER['REMOTE_ADDR']." | ".$message."\r\n";
         self::writeLog($data);
     }
 

@@ -1,0 +1,13 @@
+{
+    "name": "aztyu/fuel",
+    "require": {
+		"corneltek/pux": "^1.6",
+        "j4mie/idiorm": "^1.5"
+    },
+    "authors": [
+        {
+            "name": "cBeal",
+            "email": "169796@supinfo.com"
+        }
+    ]
+}

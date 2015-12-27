@@ -25,6 +25,7 @@ $api_user_mux->get('/check', ['ApiUserController','checkAction']);
 $api_mux->mount('/user', $api_user_mux);
 
 $api_fuel_mux->get('/find', ['ApiFuelController','findAction']);
+$api_fuel_mux->post('/insert', ['ApiFuelController','insertAction']);
 $api_mux->mount('/fuel', $api_fuel_mux);
 
 $main_mux->mount('/api', $api_mux);

@@ -22,6 +22,8 @@ $api_fuel_mux = new Mux;
 $main_mux = new Mux;
 
 $api_user_mux->get('/check', ['ApiUserController','checkAction']);
+$api_user_mux->get('/connect', ['ApiUserController','connectAction']);
+$api_user_mux->get('/create', ['ApiUserController','createAction']);
 $api_mux->mount('/user', $api_user_mux);
 
 $api_fuel_mux->get('/find', ['ApiFuelController','findAction']);

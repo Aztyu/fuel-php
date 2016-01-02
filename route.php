@@ -34,7 +34,7 @@ $main_mux->mount('/api', $api_mux);
 
 $route = $main_mux->dispatch($path);
 if($route == null){
-    echo 'error\r\n';
+    echo 'error';
     $route = $main_mux->dispatch('/');
 }
 echo Executor::execute($route);

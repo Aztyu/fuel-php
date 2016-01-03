@@ -80,7 +80,7 @@ class ApiFuelController extends \Pux\Controller{
     }
 
     public function insertAction(){
-        if(isset($_GET["passkey"])){
+        if(isset($_GET["passkey"]) && $_GET["passkey"] == Connection::$key){
             $json = file_get_contents('php://input');
             $obj = json_decode($json, true);
 
@@ -93,7 +93,7 @@ class ApiFuelController extends \Pux\Controller{
                 $fuel->insertToDB($station_id);
             }
         }else{
-            echo "Please pass a key";
+            echo "Please pass a valid key";
         }
     }
 

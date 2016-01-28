@@ -34,7 +34,7 @@ class ApiFuelController extends \Pux\Controller{
 
             $date = '2014-00-00';       //Base date
 
-            $request = $bdd->prepare("SELECT * FROM fuel_station WHERE latitude >= :s_lat AND latitude <= :e_lat AND longitude >= :s_lon AND longitude <= :e_lon AND last_update >= :date");    //Only select station with a valid price
+            $request = $bdd->prepare("SELECT * FROM fuel_station LEFT JOIN fuel_price ON last_update = fuel_price.price_id WHERE latitude >= :s_lat AND latitude <= :e_lat AND longitude >= :s_lon AND longitude <= :e_lon AND last_update >= :date");    //Only select station with a valid price
             $request->execute(array(
                 's_lat' => $s_lat,
                 'e_lat' => $e_lat,
@@ -53,8 +53,9 @@ class ApiFuelController extends \Pux\Controller{
                 $station_row->setCity($donnees['city']);
                 $station_row->setStationName($donnees['station_name']);
                 $station_row->setBrand($donnees['brand']);
-                $station_row->setLastUpdate($donnees['last_update']);
+                $station_row->setLastUpdate($donnees['date']);   //Replace by a join
                 $station_row->updateDistance($coord);
+                $station_row->setFuelPrice(new FuelPrice($donnees['diesel_price'], $donnees['petrol95_price'], $donnees['petrol95E10_price'], $donnees['petrol98_price'], $donnees['gpl_price']));
                 array_push($station, $station_row);
             }
 
@@ -63,18 +64,6 @@ class ApiFuelController extends \Pux\Controller{
                 return;
             }
 
-            for($i = 0; $i < count($station); $i++) {
-                if ($station[$i]->getLastUpdate() > 0) {
-                    $station_request = $bdd->prepare("SELECT * FROM fuel_price WHERE price_id = :price_id");
-                    $station_request->execute(array(
-                        'price_id' => $station[$i]->getLastUpdate()
-                    ));
-
-                    while ($donnees = $station_request->fetch()) {
-                        $station[$i]->setFuelPrice(new FuelPrice($donnees['diesel_price'], $donnees['petrol95_price'], $donnees['petrol95E10_price'], $donnees['petrol98_price'], $donnees['gpl_price']));
-                    }
-                }
-            }
             Message::sendJSONMessage(false, $station);
         }
     }
